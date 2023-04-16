@@ -1,0 +1,23 @@
+String	字符串	charAt toCharArray split substring indexOf lastIndexOf replace length
+List	列表	add remove get size subList
+
+Stack	栈	push pop peek isEmpty size
+
+
+
+Queue	队列	offer poll peek isEmpty size
+Deque	双向队列	offerFirst offerLast pollFirst pollLast peekFirst peekLast isEmpty size
+PriorityQueue	优先队列	offer poll peek isEmpty size
+比较器 (o1,o2)->{
+if(o1[0]==o2[0])
+	return o1[0]-o2[0];
+else return 
+	o2[1]-o1[1];//语法糖 弱化语法的东西：
+}
+
+
+
+Set		add remove contains isEmpty size first(TreeSet) last(TreeSet)
+Map		put get getOrDefault containsKey containsValue keySet values isEmpty size
+
+
