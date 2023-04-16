@@ -18,10 +18,9 @@ public class GameEngineThread extends  Thread {
     public void run() {
         while (true){
             try {
-                Thread.sleep(5000);
+                Thread.sleep(1000);
                 logic();//先试用logic改变逻辑：
                 showG();
-                System.out.println("");
                 System.out.println("");
                 System.out.println("");
             } catch (InterruptedException e) {
@@ -32,10 +31,51 @@ public class GameEngineThread extends  Thread {
 
     private void logic() {
         for (GameNode gameNode : l1) {
-            gameNode.
+                switch (gameNode.state){
+                    case STAND:
+                        break;
+                    case SLEEP:
+                        break;
+                    case NAVIGATABLE:
+                        doMoveNavigatable(gameNode);
+                }
         }
     }
 
+    private void doMoveNavigatable(GameNode gameNode) {
+        //按照导航方向行走
+        //首先在x方向上靠近，然后在y方向上靠近；
+        int tarx=gameNode.getTarx();
+        int tary=gameNode.getTary();
+        int x=gameNode.getX();
+        int y=gameNode.getY();
+        if(x!=tarx){
+            int dir=tarx-x;
+            if(dir>0){
+                x+=gameNode.speed;
+            }else{
+                x-=gameNode.speed;
+            }
+        }else if(y!=tary){
+            int dir=tary-y;
+            if(dir>0){
+                y+=gameNode.speed;
+            }else{
+                y-=gameNode.speed;
+            }
+        }else{
+            gameNode.setState(NodeState.STAND);//到了就不用动了
+        }
+        gameNode.setX(x);
+        gameNode.setY(y);
+
+    }
+
+    private void doMove(GameNode gameNode) {
+        //不按照导航的方向行走：
+        int speed=gameNode.speed;
+        speed=1;//先写死;
+    }
     private void showG(){
         int row=g.length;
         int col=g[0].length;
