@@ -1,7 +1,7 @@
 package 马菜.写一个小游戏;
 
 public class GameNode {
-
+    int money=0;
     public int getY() {
         return y;
     }
